@@ -11,7 +11,7 @@
 					<n:language>{{ publication_lang }}</n:language>
 				</n:publication>
 				<n:title>{{ url.title }}</n:title>
-				{% if url.lastmod %}<n:publication_date>{{ url.lastmod.isoformat }}{{ publication_tz }}</n:publication_date>{% endif %}
+				{% if url.lastmod %}<n:publication_date>{{ url.lastmod|date:"cO" }}</n:publication_date>{% endif %}
 				{% if url.access %}<n:access>{{ url.access }}</n:access> {% endif %}
 				{% if url.genres %}<n:genres>{{ url.genres }}</n:genres>{% endif %}
 				{% if url.keywords %}<n:keywords>{{ url.keywords|escape }}</n:keywords>{% endif %}
