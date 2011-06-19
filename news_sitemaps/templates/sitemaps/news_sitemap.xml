@@ -4,7 +4,7 @@
 	{% spaceless %}
 		{% for url in urlset %}
 			<url>
-			<loc>{{ url.location|escape }}</loc>
+			<loc>{{ url.location }}</loc>
 			<n:news>
 				<n:publication>
 					<n:name>{{ publication_name }}</n:name>
@@ -14,7 +14,7 @@
 				{% if url.lastmod %}<n:publication_date>{{ url.lastmod|date:"cO" }}</n:publication_date>{% endif %}
 				{% if url.access %}<n:access>{{ url.access }}</n:access> {% endif %}
 				{% if url.genres %}<n:genres>{{ url.genres }}</n:genres>{% endif %}
-				{% if url.keywords %}<n:keywords>{{ url.keywords|escape }}</n:keywords>{% endif %}
+				{% if url.keywords %}<n:keywords>{{ url.keywords }}</n:keywords>{% endif %}
 				{% if url.stock_tickers %}<n:stock_tickers>{{ url.stock_tickers }}</n:stock_tickers>{% endif %}
 			</n:news>
 			</url>
