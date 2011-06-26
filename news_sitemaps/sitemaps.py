@@ -1,5 +1,7 @@
+import pytz
 import datetime
 from django.contrib.sitemaps import Sitemap
+from django.conf import settings
 
 class NewsSitemap(Sitemap):
     def genres(self, obj):
@@ -72,6 +74,11 @@ class NewsSitemap(Sitemap):
             lastmod = get('lastmod', item, None)
             if isinstance(lastmod, datetime.time) or isinstance(lastmod, datetime.datetime):
                 lastmod = lastmod.replace(microsecond=0)
+                # To have the timezone offset displayed by the "c" format (e.g. +02:00)
+                # the datetime needs to have a time zone
+                if lastmod.tzinfo is None:
+                    tz = pytz.timezone(settings.TIME_ZONE)
+                    lastmod = tz.localize(lastmod)
 
             yield {
                 'location':     "http://%s%s" % (domain, get('location', item)),
