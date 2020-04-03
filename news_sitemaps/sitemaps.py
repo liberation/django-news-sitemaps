@@ -81,7 +81,7 @@ class NewsSitemap(Sitemap):
                     lastmod = tz.localize(lastmod)
 
             yield {
-                'location':     "http://%s%s" % (domain, get('location', item)),
+                'location':     "https://%s%s" % (domain, get('location', item)),
                 'lastmod':      lastmod,
                 'changefreq':   get('changefreq', item, None),
                 'priority':     get('priority', item, None),
